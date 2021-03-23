@@ -55,3 +55,4 @@ To allow connections from other devices (e.g. to test the login experience from 
     * `--cert=adhoc` will serve content over HTTPS using a self-signed certificate. (You will likely be required to accept certificate warnings in the client browser.)
 1. On the client device, access the demo app using the **same** host/domain name as the redirect URL.
     * E.g. `https://john-11234.local:8080`
+
