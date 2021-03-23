@@ -3,7 +3,7 @@ import json
 import os
 import traceback
 
-from flask import Flask, request, redirect, session, render_template
+from flask import Flask, request, redirect, session, render_template, escape
 
 from duo_universal.client import Client, DuoException
 
@@ -72,8 +72,9 @@ def login_post():
 # This route URL must match the redirect_uri passed to the duo client
 @app.route("/duo-callback")
 def duo_callback():
-    if request.args.get('error'):
-        return "Got Error: {}".format(request.args)
+    callback_error = request.args.get('error')
+    if callback_error:
+        return "Got Error: {}".format(escape(callback_error))
 
     # Get state to verify consistency and originality
     state = request.args.get('state')
